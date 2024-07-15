@@ -30,7 +30,10 @@ const LoginPage: React.FC = () => {
         alert(result.error);
         return;
       } else {
-        Cookies.set("session", result.token, { expires: 1, path: "/" }); // 1일 동안 유효한 쿠키 설정
+        Cookies.set("session", JSON.stringify(result.user), {
+          expires: 1,
+          path: "/",
+        });
         router.replace("/pokemonList");
         return;
       }
